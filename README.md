@@ -1,2 +1,2 @@
-# mutask
-Communication and task scheduling app for freelancers.
+# muTask
+Communication and task scheduling for remote workers.
