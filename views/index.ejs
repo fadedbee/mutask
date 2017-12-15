@@ -5,9 +5,9 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= sid %></h1>
+    <h1>muTask</h1>
+    <p> - a communications tool for remote workers.</p1>
     <script>
-      var sid = '<%= sid %>';
       var ws = false;
 
       /*
@@ -29,7 +29,7 @@
         }
         ws.onopen = function(event) {
           console.log('websocket opened');
-          ws.write({connect:{sid:sid}});
+          ws.write({connect:true}});
           ws.onclose = function(event) {
             console.warn('websocket close:', event);
             ws = false;

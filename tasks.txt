@@ -1,0 +1,4 @@
+- write login/register page which takes just an email address, sends an email with a link to a newly created session
+- write a schema
+- write users' home page, including their groups and the statuses of the users in their groups
+- publish on the web
