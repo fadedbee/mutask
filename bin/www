@@ -10,6 +10,11 @@ var http = require('http');
 var ws = require('ws');
 
 /**
+ * Shared state across app.
+ */
+process.users_by_cookie = {};
+
+/**
  * Get port from environment and store in Express.
  */
 
