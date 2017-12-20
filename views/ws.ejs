@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/favicon.ico">
+
+  <title>muTask - business communication for remote workers</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/signin.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+  <h1>muTask</h1>
+  <p>- business communication for remote workers</p>
+</div> <!-- /container -->
+    <script>
+      var ws = false;
+
+      /*
+      document.addEventListener('keydown', function(event) {
+        console.log(event);
+        if (ws) {
+          if (event.key === 'x') ws.write({'key':'x'});
+        }
+      });
+      */
+
+      setInterval(function() {
+        if (ws) return; // already open
+        var ws_url = (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host;
+        ws = new WebSocket(ws_url);
+        ws.write = function(ob) {
+          console.log('sending', ob);
+          ws.send(JSON.stringify(ob));
+        }
+        ws.onopen = function(event) {
+          console.log('websocket opened');
+          ws.write({connect:true}});
+          ws.onclose = function(event) {
+            console.warn('websocket close:', event);
+            ws = false;
+          }
+          ws.onmessage = function(message) {
+            console.log('websocket message:', message);
+          }
+        }
+        ws.onerror = function(err) {
+          console.error('websocket error:', err);
+          ws = false;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
