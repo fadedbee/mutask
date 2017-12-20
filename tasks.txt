@@ -1,3 +1,31 @@
+login design
+
+A frictionless login system wih no passwords
+
+1. enters email address
+2. server sends email, with token link: mutask.com/token/98230498/home/fred@bedrock.org
+   - random token generated; token and email added to token table
+3. user clicks token link
+   - token checked for validity
+   - random cookie generated; cookie and email added to cookie table; cookie is called 'cookie'
+4. token link page sets a user-cookie 'cHUkioujw8jj', allowing access, and redirects to mutask.com/fred@bedrock.org
+
+Server-sent links look like
+1. server sends email, with token link: mutask.com/token/98230498/rest/of/url
+2. user clicks token link
+3. token link page sets a user-cookie 'cHUkioujw8jj', allowing access, and redirects to mutask.com/rest/of/url
+
+paths
+
+/home/<email> user's home page
+/org/<org> org page
+/purchase_order/<po>
+/task/<task_id>
+
+
+
+
+
 - write login/register page which takes just an email address, sends an email with a link to a newly created session
 - write a schema
 - write users' home page, including their groups and the statuses of the users in their groups
